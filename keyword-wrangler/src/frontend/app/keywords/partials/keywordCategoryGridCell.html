@@ -1,0 +1,14 @@
+<div class="ngCellText" ng-class="col.colIndex()">
+      <span ng-cell-text>
+        {{
+          resolveEntity(
+            {
+              'what'  : 'name',
+              'from'  : keywordCategories,
+              'where' : 'id',
+              'is'    : row.entity.categoryID
+            }
+          );
+        }}
+      </span>
+</div>

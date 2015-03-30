@@ -1,0 +1,6 @@
+<select
+        class="form-control"
+        ng-model="row.entity.categoryID"
+        ng-options="keywordCategory.id as keywordCategory.name for keywordCategory in keywordCategories"
+        ng-blur="stopEditingTagHeading()">
+</select>

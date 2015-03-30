@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Keyword Wrangler</title>
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/angular-grid/ng-grid.min.css">
+        <style>
+            .gridStyle {
+                margin-top: 20px;
+                height: 800px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="main" class="container">
+            <div class="span12" ng-view></div>
+        </div>
+
+        <script src="bower_components/async/lib/async.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/angular-grid/build/ng-grid.js"></script>
+
+        <script src="app/app.js"></script>
+        <script src="app/lib/resolveEntity.js"></script>
+        <script src="app/lib/RepositoryFactory.js"></script>
+        <script src="app/keywords/KeywordsController.js"></script>
+    </body>
+
+</html>
