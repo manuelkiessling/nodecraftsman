@@ -1,69 +1,54 @@
-'use strict';
+'use strict'
 
-var async = require('async');
-var env = require('../src/backend/env');
-var dbOptions = require('../database.json')[env];
+let async = require('async')
+let env = require('../src/backend/env')
+let dbOptions = require('../database.json')[env]
 
-var resetDatabase = function (dbSession, callback) {
-
+let resetDatabase = function (dbSession, callback) {
   if (dbOptions.driver === 'sqlite3') {
-
     async.series(
       [
-
         function (callback) {
-          dbSession.remove('keyword', '1', function (err) {
+          dbSession.remove('keyword', '1', function (err, res) {
             callback(err)
-          });
+          })
         },
-
         function (callback) {
-          dbSession.remove('category', '1', function (err) {
+          dbSession.remove('category', '1', function (err, res) {
             callback(err)
-          });
+          })
         },
-
         function (callback) {
-          dbSession.remove('sqlite_sequence', '1', function (err) {
-            callback(err, null);
-          });
+          dbSession.remove('sqlite_sequence', '1', function (err, res) {
+            callback(err)
+          })
         }
-
       ],
-
-      function (err, results) {
-        callback(err);
-      }
-    );
-
+        function (err, results) {
+          callback(err)
+        }
+    )
   }
 
   if (dbOptions.driver === 'mysql') {
-
     async.series(
       [
-
         function (callback) {
-          dbSession.remove('TRUNCATE keyword', [], function (err) {
+          dbSession.query('TRUNCATE keyword', [], function (err, res) {
             callback(err)
-          });
+          })
         },
-
         function (callback) {
-          dbSession.remove('TRUNCATE category', [], function (err) {
+          dbSession.query('TRUNCATE category', [], function (err, res) {
             callback(err)
-          });
+          })
         }
-
       ],
-
       function (err, results) {
-        callback(err);
+        callback(err)
       }
-    );
-
+    )
   }
+}
 
-};
-
-module.exports = resetDatabase;
+module.exports = resetDatabase
