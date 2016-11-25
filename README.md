@@ -1,3 +1,19 @@
+# About this fork
+
+This fork fixes some minor issues found in the code of: 'The Node Craftsman Book' (online version published 2015-10-10).  It is to be reviewed and either merged or cherry picked into the main repo as the repo author sees fit.
+
+The specific issue it fixes are these:
+
+* **resetDatabase.js**; mysql dbSession altered to use TRUNCATE
+* **server.js**; Altered POST keywords section for showing id.   mysql was seeing result.insertId as undefined so used dbSession.getLastInsertID() instead.  Also corrected require for dbSession.
+* **app.js**; Altered as per Angular style guide to use a controllerAs - linked to not referencing $scope in controller
+* **KeywordsController.js**; Altered as per Angular style guide
+* **resolveEntity.js**; Altered as per Angular style guide
+* **RepositoryFactory.js**; Altered as per Angular style guide
+
+
+----
+
 # About this repository
 
 This repo hosts accompanying resources for *The Node Craftsman Book*.
