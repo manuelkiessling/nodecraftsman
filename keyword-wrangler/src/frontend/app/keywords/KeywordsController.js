@@ -5,7 +5,7 @@
       .module('app')
       .controller('KeywordsController', KeywordsController)
 
-  KeywordsController.$inject = ['controllerScope', 'RepositoryFactory', 'resolveEntity']
+  KeywordsController.$inject = ['$scope', 'RepositoryFactory', 'resolveEntity']
 
   function KeywordsController (controllerScope, RepositoryFactory, resolveEntity) {
     /*  == Frontend Initialisation ==  */
