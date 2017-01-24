@@ -25,12 +25,12 @@ var Server = function(port) {
             console.log(err);
             res.status.internalServerError(err);
           } else {
-            dbSession.query('INSERT INTO keyword (value, categoryID) VALUES (?, ?);', [newKeyword.value, newKeyword.categoryID], function (err, result) {
+            dbSession.query('INSERT INTO keyword (value, categoryID) VALUES (?, ?);', [newKeyword.value, newKeyword.categoryID], function (err) {
               if (err) {
                 console.log(err);
                 res.status.internalServerError(err);
               } else {
-                res.object({'status': 'ok', 'id': result.insertId}).send();
+                res.object({'status': 'ok', 'id': dbSession.getLastInsertId()}).send();
               }
             });
           }
