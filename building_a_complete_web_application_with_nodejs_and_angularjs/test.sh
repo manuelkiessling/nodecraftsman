@@ -8,3 +8,6 @@ cd -
 
 ./node_modules/.bin/db-migrate up --env test
 ./node_modules/.bin/jasmine-node --verbose --captureExceptions ./spec/
+
+./node_modules/.bin/db-migrate up --env production
+KW_ENV=production ./node_modules/.bin/jasmine-node --verbose --captureExceptions ./spec/
