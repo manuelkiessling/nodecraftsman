@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-cd ./ch01_test-driven_nodejs_development
+cd ./ch03_test-driven_nodejs_development
 rm -rf node_modules
+docker run --rm -ti -v "$PWD":/opt/source -w /opt/source node:7.4.0 /bin/bash ./test.sh
+cd -
+
+cd ./ch06_using_and_creating_event_emitters
+rm -rf ./creating_event_emitters/node_modules
 docker run --rm -ti -v "$PWD":/opt/source -w /opt/source node:7.4.0 /bin/bash ./test.sh
 cd -
 
