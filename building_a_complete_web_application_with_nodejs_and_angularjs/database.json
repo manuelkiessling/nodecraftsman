@@ -11,9 +11,9 @@
 
   "production": {
     "driver": "mysql",
-    "host": "localhost",
+    "host": "mysql",
     "user": "root",
-    "password": "root",
+    "password": "",
     "database": "keyword_wrangler"
   }
 }

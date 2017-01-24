@@ -44,13 +44,13 @@ var resetDatabase = function (dbSession, callback) {
       [
 
         function (callback) {
-          dbSession.remove('TRUNCATE keyword', [], function (err) {
+          dbSession.query('TRUNCATE keyword', [], function (err) {
             callback(err)
           });
         },
 
         function (callback) {
-          dbSession.remove('TRUNCATE category', [], function (err) {
+          dbSession.query('TRUNCATE category', [], function (err) {
             callback(err)
           });
         }
