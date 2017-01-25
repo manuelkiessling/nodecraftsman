@@ -15,11 +15,22 @@ rm -rf ./node_modules
 docker run --rm -ti -v "$PWD":/opt/source -w /opt/source node:7.4.0 /bin/bash ./test.sh
 cd -
 
+cd ./ch08_nodejs_and_mysql
+rm -rf node_modules
+docker stop nam-mysql
+docker run --rm --name nam-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -d mysql:5.6
+until docker run --rm -it --link nam-mysql:mysql mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -uroot -e "CREATE DATABASE are_we_ready_yet;"'
+do
+    echo "Trying again to create MySQL database 'are_we_ready_yet'..."
+done
+docker run --rm -ti --link nam-mysql:mysql -v "$PWD":/opt/source -w /opt/source node:7.4.0 /bin/bash ./test.sh
+cd -
+
 cd ./ch10_building_a_complete_web_application_with_nodejs_and_angularjs
 rm -rf node_modules
 rm -rf src/frontend/bower_components
 docker stop bacwawnaa-mysql
-docker run --rm --name bacwawnaa-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p 3306:3306 -d mysql:5.6
+docker run --rm --name bacwawnaa-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -d mysql:5.6
 until docker run --rm -it --link bacwawnaa-mysql:mysql mysql:5.6 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -uroot -e "CREATE DATABASE keyword_wrangler;"'
 do
     echo "Trying again to create MySQL database 'keyword_wrangler'..."
