@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npm install
+npm install >/dev/null 2>&1
 
 cd src/frontend
 ../../node_modules/.bin/bower install --allow-root install

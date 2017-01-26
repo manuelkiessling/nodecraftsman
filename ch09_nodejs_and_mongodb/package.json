@@ -1,0 +1,9 @@
+{
+  "name": "mongodb-test",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {}
+}
